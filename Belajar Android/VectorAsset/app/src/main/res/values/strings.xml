@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyVectorAssets</string>
+    <string name="vector_asset">Vector Asset</string>
+    <string name="android_icon">Android Icon</string>
+    <string name="account_icon">Account Icon</string>
+</resources>

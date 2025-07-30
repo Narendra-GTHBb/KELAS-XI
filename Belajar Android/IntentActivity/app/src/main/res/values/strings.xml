@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intent Data App</string>
+    <string name="masukkan_nama_barang">Masukkan Nama Barang</string>
+    <string name="barang">BARANG</string>
+    <string name="penjualan">PENJUALAN</string>
+    <string name="pembelian">PEMBELIAN</string>
+    <string name="informasi_barang">Informasi Barang</string>
+    <string name="nama_barang">Nama Barang:</string>
+    <string name="data_diterima">Data berhasil diterima dari MainActivity</string>
+    <string name="tidak_ada_data">Tidak ada data barang</string>
+    <string name="fitur_belum_tersedia">Fitur ini belum diimplementasikan</string>
+    <string name="masukkan_nama_dulu">Silakan masukkan nama barang terlebih dahulu!</string>
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Konversi Suhu</string>
+    <string name="app_title">Konversi Suhu</string>
+    <string name="input_label">Masukkan Suhu:</string>
+    <string name="input_hint">Masukkan nilai suhu</string>
+    <string name="conversion_label">Pilihan Konversi:</string>
+    <string name="convert_button">KONVERSI</string>
+    <string name="result_label">Hasil:</string>
+    <string name="result_placeholder">0.0</string>
+
+    <!-- Array untuk pilihan konversi -->
+    <string-array name="conversion_types">
+        <item>Celsius ke Fahrenheit</item>
+        <item>Celsius ke Kelvin</item>
+        <item>Celsius ke Reamur</item>
+        <item>Fahrenheit ke Celsius</item>
+        <item>Fahrenheit ke Kelvin</item>
+        <item>Fahrenheit ke Reamur</item>
+        <item>Kelvin ke Celsius</item>
+        <item>Kelvin ke Fahrenheit</item>
+        <item>Kelvin ke Reamur</item>
+        <item>Reamur ke Celsius</item>
+        <item>Reamur ke Fahrenheit</item>
+        <item>Reamur ke Kelvin</item>
+    </string-array>
+
+    <!-- Error messages -->
+    <string name="error_empty_input">Masukkan nilai suhu terlebih dahulu</string>
+    <string name="error_invalid_input">Nilai suhu tidak valid</string>
+</resources>

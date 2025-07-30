@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyVectorAssets</string>
+    <string name="vector_asset_title">Vector Asset</string>
+    <string name="android_robot_desc">Android Robot Icon</string>
+    <string name="bug_report_desc">Bug Report Icon</string>
+    <string name="account_circle_desc">Account Circle Icon</string>
+    <string name="toast_android_robot">Android Robot Vector Asset clicked!</string>
+    <string name="toast_bug_report">Bug Report Vector Asset clicked!</string>
+    <string name="toast_account_circle">Account Circle Vector Asset clicked!</string>
+</resources>

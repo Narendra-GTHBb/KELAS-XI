@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#009688"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IntentActivity"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Content Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/etNamaBarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukan Nama Barang"
+            android:inputType="text"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:textColorHint="#999999" />
+
+        <!-- Garis bawah EditText -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E91E63"
+            android:layout_marginTop="-8dp"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnBarang"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="BARANG"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"
+            android:background="#E0E0E0"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPenjualan"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="PENJUALAN"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="8dp"
+            android:background="#E0E0E0"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPembelian"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="PEMBELIAN"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:background="#E0E0E0"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

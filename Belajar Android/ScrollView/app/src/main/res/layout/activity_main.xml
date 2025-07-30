@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4CAF50"
+    tools:context=".MainActivity">
+
+    <!-- Header dengan judul ScrollView -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#4CAF50"
+        android:text="ScrollView"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ScrollView yang berisi form -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Field Tempat dan Tanggal Lahir -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tempat dan Tanggal Lahir"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contoh: Jakarta, 15 Januari 1990"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Alamat -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Masukkan alamat lengkap Anda"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field No Telp -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Telp"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contoh: 08123456789"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:inputType="phone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Email -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contoh@email.com"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:inputType="textEmailAddress" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Pekerjaan -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pekerjaan"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan pekerjaan Anda"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Pendidikan Terakhir -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pendidikan Terakhir"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contoh: S1 Teknik Informatika"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Pengalaman Kerja -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pengalaman Kerja"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Jelaskan pengalaman kerja Anda..."
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Hobi -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hobi"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan hobi Anda"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Skill/Keahlian -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Skill/Keahlian"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Sebutkan skill atau keahlian yang Anda kuasai..."
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Organisasi -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pengalaman Organisasi"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Jelaskan pengalaman organisasi Anda..."
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Referensi -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Referensi"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Nama dan kontak referensi (opsional)..."
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Field Keterangan Tambahan -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan Tambahan"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="Masukkan keterangan tambahan yang ingin Anda sampaikan..."
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="30dp" />
+
+            <!-- Tombol Submit -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="SUBMIT"
+                android:background="#4CAF50"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Tombol Reset -->
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="RESET"
+                android:background="#FF5722"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp" />
+
+            <!-- Text untuk menandai akhir form -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="--- Akhir Form ---"
+                android:textAlignment="center"
+                android:textColor="#999999"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
