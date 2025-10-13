@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_bbc"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="BBC News" />
+
+        <item
+            android:id="@+id/nav_cnn"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="CNN" />
+
+        <item
+            android:id="@+id/nav_reuters"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="Reuters" />
+
+        <item
+            android:id="@+id/nav_dw"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="DW News" />
+
+        <item
+            android:id="@+id/nav_sky"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="Sky News" />
+
+        <item
+            android:id="@+id/nav_guardian"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="The Guardian" />
+    </group>
+
+</menu>
