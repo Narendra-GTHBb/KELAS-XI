@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogApp - Manual Data Upload</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        background: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #3367d6;
+      }
+      .status {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+      }
+      .error {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+      }
+      .info {
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BlogApp - Manual Data Upload</h1>
+    <p>Gunakan ini jika generate data dari app tidak berhasil.</p>
+
+    <button onclick="uploadDummyData()">Upload Dummy Articles</button>
+    <button onclick="uploadDummyUsers()">Upload Dummy Users</button>
+    <button onclick="clearAllData()">Clear All Data</button>
+
+    <div id="status"></div>
+
+    <script type="module">
+      // Import Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        doc,
+        setDoc,
+        deleteDoc,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+      // Your Firebase config (ganti dengan config dari google-services.json)
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "blog-app-6cd50.firebaseapp.com",
+        projectId: "blog-app-6cd50",
+        storageBucket: "blog-app-6cd50.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      function showStatus(message, type = "info") {
+        const statusDiv = document.getElementById("status");
+        statusDiv.innerHTML = `<div class="${type}">${message}</div>`;
+      }
+
+      // Dummy articles data
+      const dummyArticles = [
+        {
+          title: "Getting Started with Android Development",
+          content:
+            "Android development is an exciting journey that opens up countless possibilities...",
+          description:
+            "A comprehensive guide to getting started with Android development.",
+          authorId: "dummy_author_1",
+          authorName: "John Developer",
+          category: "Technology",
+          tags: ["android", "mobile", "development", "kotlin"],
+          imageUrl:
+            "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=800",
+          status: "published",
+          createdAt: new Date(Date.now() - 86400000 * 7),
+          updatedAt: new Date(Date.now() - 86400000 * 7),
+          likesCount: 45,
+          viewsCount: 234,
+        },
+        {
+          title: "Mastering Kotlin for Android",
+          content:
+            "Kotlin has revolutionized Android development with its concise syntax...",
+          description:
+            "Deep dive into Kotlin features that make Android development more efficient.",
+          authorId: "dummy_author_1",
+          authorName: "John Developer",
+          category: "Programming",
+          tags: ["kotlin", "android", "programming", "mobile"],
+          imageUrl:
+            "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800",
+          status: "published",
+          createdAt: new Date(Date.now() - 86400000 * 5),
+          updatedAt: new Date(Date.now() - 86400000 * 5),
+          likesCount: 67,
+          viewsCount: 189,
+        },
+        {
+          title: "UI/UX Best Practices for Mobile Apps",
+          content:
+            "Creating intuitive and beautiful user interfaces is crucial for app success...",
+          description:
+            "Essential UI/UX principles every mobile developer should know.",
+          authorId: "dummy_author_2",
+          authorName: "Sarah Tech",
+          category: "Design",
+          tags: ["ui", "ux", "design", "mobile", "user-experience"],
+          imageUrl:
+            "https://images.unsplash.com/photo-1559028006-448665bd7c7f?w=800",
+          status: "published",
+          createdAt: new Date(Date.now() - 86400000 * 3),
+          updatedAt: new Date(Date.now() - 86400000 * 3),
+          likesCount: 89,
+          viewsCount: 356,
+        },
+      ];
+
+      // Dummy users data
+      const dummyUsers = [
+        {
+          id: "dummy_author_1",
+          fullName: "John Developer",
+          email: "john@example.com",
+          bio: "Passionate Android developer with 5+ years of experience",
+          profileImageUrl:
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+          articlesCount: 2,
+          followersCount: 145,
+          createdAt: new Date(),
+        },
+        {
+          id: "dummy_author_2",
+          fullName: "Sarah Tech",
+          email: "sarah@example.com",
+          bio: "Mobile technology enthusiast and UI/UX designer",
+          profileImageUrl:
+            "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400",
+          articlesCount: 2,
+          followersCount: 230,
+          createdAt: new Date(),
+        },
+      ];
+
+      window.uploadDummyData = async function () {
+        showStatus("Uploading dummy articles...", "info");
+        try {
+          for (let i = 0; i < dummyArticles.length; i++) {
+            const article = dummyArticles[i];
+            await addDoc(collection(db, "articles"), article);
+            showStatus(
+              `Uploaded article ${i + 1}/${dummyArticles.length}: ${
+                article.title
+              }`,
+              "info"
+            );
+          }
+          showStatus("✅ All dummy articles uploaded successfully!", "success");
+        } catch (error) {
+          showStatus(`❌ Error uploading articles: ${error.message}`, "error");
+          console.error("Error:", error);
+        }
+      };
+
+      window.uploadDummyUsers = async function () {
+        showStatus("Uploading dummy users...", "info");
+        try {
+          for (let i = 0; i < dummyUsers.length; i++) {
+            const user = dummyUsers[i];
+            await setDoc(doc(db, "users", user.id), user);
+            showStatus(
+              `Uploaded user ${i + 1}/${dummyUsers.length}: ${user.fullName}`,
+              "info"
+            );
+          }
+          showStatus("✅ All dummy users uploaded successfully!", "success");
+        } catch (error) {
+          showStatus(`❌ Error uploading users: ${error.message}`, "error");
+          console.error("Error:", error);
+        }
+      };
+
+      window.clearAllData = async function () {
+        if (!confirm("Are you sure you want to delete all articles and users?"))
+          return;
+
+        showStatus("Clearing all data...", "info");
+        try {
+          // Clear articles
+          const articlesSnapshot = await getDocs(collection(db, "articles"));
+          for (const doc of articlesSnapshot.docs) {
+            await deleteDoc(doc.ref);
+          }
+
+          // Clear users (except real users)
+          const usersSnapshot = await getDocs(collection(db, "users"));
+          for (const doc of usersSnapshot.docs) {
+            if (doc.id.startsWith("dummy_")) {
+              await deleteDoc(doc.ref);
+            }
+          }
+
+          showStatus("✅ All dummy data cleared successfully!", "success");
+        } catch (error) {
+          showStatus(`❌ Error clearing data: ${error.message}`, "error");
+          console.error("Error:", error);
+        }
+      };
+    </script>
+  </body>
+</html>

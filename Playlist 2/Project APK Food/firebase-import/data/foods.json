@@ -1,0 +1,322 @@
+[
+  {
+    "id": "food_margherita_pizza",
+    "name": "Margherita Pizza",
+    "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil leaves",
+    "categoryId": "cat_pizza",
+    "price": 85000,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b",
+    "rating": 4.5,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 15,
+    "ingredients": [
+      "Tomato sauce",
+      "Mozzarella cheese",
+      "Fresh basil",
+      "Olive oil"
+    ]
+  },
+  {
+    "id": "food_pepperoni_pizza",
+    "name": "Pepperoni Pizza",
+    "description": "Spicy pepperoni with melted cheese on crispy crust",
+    "categoryId": "cat_pizza",
+    "price": 95000,
+    "imageUrl": "https://images.unsplash.com/photo-1628840042765-356cda07504e",
+    "rating": 4.7,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 18,
+    "ingredients": [
+      "Pepperoni",
+      "Mozzarella cheese",
+      "Tomato sauce",
+      "Italian herbs"
+    ]
+  },
+  {
+    "id": "food_beef_burger",
+    "name": "Classic Beef Burger",
+    "description": "Juicy beef patty with lettuce, tomato, and special sauce",
+    "categoryId": "cat_burger",
+    "price": 65000,
+    "imageUrl": "https://images.unsplash.com/photo-1571091718767-18b5b1457add",
+    "rating": 4.3,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 12,
+    "ingredients": [
+      "Beef patty",
+      "Lettuce",
+      "Tomato",
+      "Onion",
+      "Special sauce",
+      "Sesame bun"
+    ]
+  },
+  {
+    "id": "food_chicken_burger",
+    "name": "Chicken Crispy Burger",
+    "description": "Crispy fried chicken with mayo and fresh vegetables",
+    "categoryId": "cat_burger",
+    "price": 58000,
+    "imageUrl": "https://images.unsplash.com/photo-1606755962773-d324e2dabd3f",
+    "rating": 4.4,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 14,
+    "ingredients": [
+      "Crispy chicken",
+      "Mayonnaise",
+      "Lettuce",
+      "Tomato",
+      "Pickle"
+    ]
+  },
+  {
+    "id": "food_ramen_tonkotsu",
+    "name": "Tonkotsu Ramen",
+    "description": "Rich pork bone broth with tender chashu and soft-boiled egg",
+    "categoryId": "cat_noodles",
+    "price": 72000,
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+    "rating": 4.6,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 20,
+    "ingredients": [
+      "Ramen noodles",
+      "Pork bone broth",
+      "Chashu pork",
+      "Soft-boiled egg",
+      "Green onion",
+      "Nori"
+    ]
+  },
+  {
+    "id": "food_pad_thai",
+    "name": "Pad Thai",
+    "description": "Thai stir-fried noodles with shrimp, tofu, and peanuts",
+    "categoryId": "cat_noodles",
+    "price": 68000,
+    "imageUrl": "https://images.unsplash.com/photo-1559314809-0f31657b4e39",
+    "rating": 4.2,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 16,
+    "ingredients": [
+      "Rice noodles",
+      "Shrimp",
+      "Tofu",
+      "Bean sprouts",
+      "Peanuts",
+      "Tamarind sauce"
+    ]
+  },
+  {
+    "id": "food_nasi_gudeg",
+    "name": "Nasi Gudeg Yogya",
+    "description": "Traditional Javanese sweet jackfruit curry with rice",
+    "categoryId": "cat_rice",
+    "price": 45000,
+    "imageUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19",
+    "rating": 4.8,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 10,
+    "ingredients": [
+      "Steamed rice",
+      "Jackfruit curry",
+      "Chicken",
+      "Tofu",
+      "Tempeh",
+      "Coconut milk"
+    ]
+  },
+  {
+    "id": "food_nasi_padang",
+    "name": "Nasi Padang",
+    "description": "Spicy Padang rice with rendang and various side dishes",
+    "categoryId": "cat_rice",
+    "price": 52000,
+    "imageUrl": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26",
+    "rating": 4.7,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 8,
+    "ingredients": [
+      "Steamed rice",
+      "Beef rendang",
+      "Curry vegetables",
+      "Sambal",
+      "Crackers"
+    ]
+  },
+  {
+    "id": "food_fried_rice",
+    "name": "Special Fried Rice",
+    "description": "Wok-fried rice with chicken, shrimp, and vegetables",
+    "categoryId": "cat_rice",
+    "price": 42000,
+    "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b",
+    "rating": 4.1,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 12,
+    "ingredients": [
+      "Jasmine rice",
+      "Chicken",
+      "Shrimp",
+      "Mixed vegetables",
+      "Soy sauce",
+      "Egg"
+    ]
+  },
+  {
+    "id": "food_iced_tea",
+    "name": "Es Teh Manis",
+    "description": "Traditional Indonesian sweet iced tea",
+    "categoryId": "cat_drinks",
+    "price": 12000,
+    "imageUrl": "https://images.unsplash.com/photo-1544145945-f90425340c7e",
+    "rating": 4.0,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 3,
+    "ingredients": ["Black tea", "Sugar", "Ice"]
+  },
+  {
+    "id": "food_orange_juice",
+    "name": "Fresh Orange Juice",
+    "description": "Freshly squeezed orange juice",
+    "categoryId": "cat_drinks",
+    "price": 18000,
+    "imageUrl": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b",
+    "rating": 4.3,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 5,
+    "ingredients": ["Fresh oranges", "Ice", "Sugar (optional)"]
+  },
+  {
+    "id": "food_coffee_latte",
+    "name": "Cafe Latte",
+    "description": "Smooth espresso with steamed milk",
+    "categoryId": "cat_drinks",
+    "price": 25000,
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735",
+    "rating": 4.5,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 7,
+    "ingredients": ["Espresso", "Steamed milk", "Milk foam"]
+  },
+  {
+    "id": "food_chocolate_cake",
+    "name": "Chocolate Fudge Cake",
+    "description": "Rich chocolate cake with fudge frosting",
+    "categoryId": "cat_dessert",
+    "price": 35000,
+    "imageUrl": "https://images.unsplash.com/photo-1551024506-0bccd828d307",
+    "rating": 4.6,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 5,
+    "ingredients": [
+      "Chocolate sponge",
+      "Fudge frosting",
+      "Cocoa powder",
+      "Chocolate chips"
+    ]
+  },
+  {
+    "id": "food_ice_cream",
+    "name": "Vanilla Ice Cream",
+    "description": "Creamy vanilla ice cream with chocolate sauce",
+    "categoryId": "cat_dessert",
+    "price": 22000,
+    "imageUrl": "https://images.unsplash.com/photo-1570197788417-0e82375c9371",
+    "rating": 4.2,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 3,
+    "ingredients": ["Vanilla ice cream", "Chocolate sauce", "Whipped cream"]
+  },
+  {
+    "id": "food_french_fries",
+    "name": "French Fries",
+    "description": "Crispy golden french fries with ketchup",
+    "categoryId": "cat_snacks",
+    "price": 28000,
+    "imageUrl": "https://images.unsplash.com/photo-1599490659213-e2b9527bd087",
+    "rating": 4.0,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 8,
+    "ingredients": ["Potatoes", "Salt", "Ketchup"]
+  },
+  {
+    "id": "food_chicken_wings",
+    "name": "Buffalo Chicken Wings",
+    "description": "Spicy buffalo wings with ranch dipping sauce",
+    "categoryId": "cat_chicken",
+    "price": 48000,
+    "imageUrl": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58",
+    "rating": 4.4,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 18,
+    "ingredients": [
+      "Chicken wings",
+      "Buffalo sauce",
+      "Ranch dressing",
+      "Celery"
+    ]
+  },
+  {
+    "id": "food_fried_chicken",
+    "name": "Crispy Fried Chicken",
+    "description": "Golden crispy fried chicken pieces",
+    "categoryId": "cat_chicken",
+    "price": 55000,
+    "imageUrl": "https://images.unsplash.com/photo-1569058242252-92b9c3408c41",
+    "rating": 4.5,
+    "isPopular": true,
+    "isAvailable": true,
+    "preparationTime": 20,
+    "ingredients": ["Chicken pieces", "Seasoned flour", "Spices", "Oil"]
+  },
+  {
+    "id": "food_spaghetti_carbonara",
+    "name": "Spaghetti Carbonara",
+    "description": "Creamy pasta with bacon and parmesan cheese",
+    "categoryId": "cat_noodles",
+    "price": 62000,
+    "imageUrl": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5",
+    "rating": 4.3,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 15,
+    "ingredients": [
+      "Spaghetti",
+      "Bacon",
+      "Egg",
+      "Parmesan cheese",
+      "Black pepper"
+    ]
+  },
+  {
+    "id": "food_green_tea",
+    "name": "Hot Green Tea",
+    "description": "Traditional Japanese green tea",
+    "categoryId": "cat_drinks",
+    "price": 15000,
+    "imageUrl": "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+    "rating": 4.1,
+    "isPopular": false,
+    "isAvailable": true,
+    "preparationTime": 4,
+    "ingredients": ["Green tea leaves", "Hot water"]
+  }
+]

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F5F5F5">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔥 DEBUG MODE"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Force Both Apps to Use Exact Same Data"
+                android:textSize="16sp"
+                android:textColor="#666"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnForceExactSameData"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="🔥 FORCE EXACT SAME DATA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#D32F2F"
+        app:cornerRadius="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmergencyExecute"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="🚨 EMERGENCY EXECUTE IDENTICAL DATA NOW! 🚨"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FF5722"
+        app:cornerRadius="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="⬅️ Back"
+        android:textSize="16sp"
+        style="@style/Widget.Material3.Button.TextButton"
+        app:cornerRadius="12dp" />
+
+</LinearLayout>

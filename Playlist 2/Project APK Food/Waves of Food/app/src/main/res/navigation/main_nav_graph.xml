@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.apkfood.wavesoffood.ui.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_foodDetailActivity"
+            app:destination="@id/foodDetailActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.apkfood.wavesoffood.ui.cart.CartFragment"
+        android:label="CartFragment">
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutActivity"
+            app:destination="@id/checkoutActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.apkfood.wavesoffood.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+
+    <activity
+        android:id="@+id/foodDetailActivity"
+        android:name="com.apkfood.wavesoffood.ui.food.FoodDetailActivity"
+        android:label="FoodDetailActivity" />
+
+    <activity
+        android:id="@+id/checkoutActivity"
+        android:name="com.apkfood.wavesoffood.ui.checkout.CheckoutActivity"
+        android:label="CheckoutActivity" />
+
+</navigation>
