@@ -1,0 +1,111 @@
+════════════════════════════════════════════════
+FIX AUTHCONTROLLER LARAVEL - LOGIN GAGAL TERUS
+════════════════════════════════════════════════
+
+MASALAH:
+Login gagal dengan error "Username, password, atau role tidak sesuai"
+padahal user sudah dibuat dengan benar di database.
+
+PENYEBAB:
+AuthController Laravel terlalu strict dalam validasi role atau
+ada masalah dengan logic validasi login.
+
+════════════════════════════════════════════════
+SOLUSI - UPDATE AUTHCONTROLLER:
+════════════════════════════════════════════════
+
+1. Buka file: app/Http/Controllers/AuthController.php
+
+2. Cari method login(), ganti SEMUA ISI method itu dengan code ini:
+
+```php
+public function login(Request $request)
+{
+    // Validasi input
+    $credentials = $request->validate([
+        'username' => 'required|string',
+        'password' => 'required|string',
+        'role' => 'required|string',
+    ]);
+
+    // Cari user berdasarkan username saja (tanpa role dulu)
+    $user = User::where('username', $credentials['username'])->first();
+
+    // Cek apakah user ada
+    if (!$user) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan'
+        ], 404);
+    }
+
+    // Cek password
+    if (!Hash::check($credentials['password'], $user->password)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Password salah'
+        ], 401);
+    }
+
+    // Cek role (case insensitive)
+    if (strtolower($user->role) !== strtolower($credentials['role'])) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Role tidak sesuai. User role: ' . $user->role . ', Login role: ' . $credentials['role']
+        ], 401);
+    }
+
+    // Semua validasi OK - buat token
+    $token = $user->createToken('auth-token')->plainTextToken;
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Login berhasil',
+        'data' => [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'username' => $user->username,
+                'role' => $user->role
+            ],
+            'token' => $token
+        ]
+    ], 200);
+}
+```
+
+3. Pastikan ada use statement di atas file:
+
+```php
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Http\Request;
+```
+
+4. Save file
+
+5. Test login lagi di Android
+
+════════════════════════════════════════════════
+KEUNTUNGAN CODE BARU:
+════════════════════════════════════════════════
+
+✅ Validasi lebih jelas per step (username, password, role)
+✅ Error message lebih informatif
+✅ Case insensitive untuk role (Kurikulum = kurikulum = KURIKULUM)
+✅ Debug lebih mudah karena tahu exact error dimana
+
+════════════════════════════════════════════════
+JIKA MASIH GAGAL SETELAH UPDATE:
+════════════════════════════════════════════════
+
+Cek Laravel log untuk lihat error message lengkap:
+
+Di terminal Laravel, jalankan:
+tail -f storage/logs/laravel.log
+
+Atau buka file: storage/logs/laravel.log
+
+Lihat error terakhir dan kasih tau error message-nya.
+
+════════════════════════════════════════════════

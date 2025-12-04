@@ -1,0 +1,101 @@
+════════════════════════════════════════════════
+ISI DATABASE LARAVEL DENGAN DATA CONTOH
+════════════════════════════════════════════════
+
+MASALAH: Database Laravel kosong, tidak ada data kelas/jadwal
+
+SOLUSI: Jalankan seeder untuk isi data
+
+════════════════════════════════════════════════
+CARA 1 - Via Laravel Tinker (CEPAT):
+════════════════════════════════════════════════
+
+1. Buka terminal di folder Laravel project
+
+2. Jalankan:
+   php artisan tinker
+
+3. Copy-paste command ini SATU PER SATU:
+
+// Cek apakah kelas sudah ada
+\DB::table('kelas')->count();
+
+// Kalau 0, insert kelas:
+\DB::table('kelas')->insert([
+    ['id' => 1, 'kelas' => 'X RPL', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 2, 'kelas' => 'XI RPL', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 3, 'kelas' => 'XII RPL', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+// Insert guru:
+\DB::table('gurus')->insert([
+    ['id' => 1, 'kode_guru' => 'G001', 'guru' => 'Pak Joko', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 2, 'kode_guru' => 'G002', 'guru' => 'Bu Siti', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+// Insert mapel:
+\DB::table('mapels')->insert([
+    ['id' => 1, 'mapel' => 'Matematika', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 2, 'mapel' => 'Bahasa Indonesia', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+// Insert tahun ajaran:
+\DB::table('tahun_ajarans')->insert([
+    ['id' => 1, 'tahun_ajaran' => '2024/2025', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+// Insert jadwal untuk X RPL, Senin:
+\DB::table('jadwals')->insert([
+    ['id' => 1, 'guru_id' => 1, 'mapel_id' => 1, 'tahun_ajaran_id' => 1, 'kelas_id' => 1, 'jam_ke' => '1', 'hari' => 'Senin', 'created_at' => now(), 'updated_at' => now()],
+    ['id' => 2, 'guru_id' => 2, 'mapel_id' => 2, 'tahun_ajaran_id' => 1, 'kelas_id' => 1, 'jam_ke' => '2', 'hari' => 'Senin', 'created_at' => now(), 'updated_at' => now()],
+]);
+
+// Insert guru_mengajar:
+\DB::table('guru_mengajars')->insert([
+    ['jadwal_id' => 1, 'hari' => 'Senin', 'kelas_id' => 1, 'guru_id' => 1, 'mapel_id' => 1, 'jam_ke' => '1', 'status' => 'Masuk', 'keterangan' => null, 'created_at' => now(), 'updated_at' => now()],
+    ['jadwal_id' => 2, 'hari' => 'Senin', 'kelas_id' => 1, 'guru_id' => 2, 'mapel_id' => 2, 'jam_ke' => '2', 'status' => 'Masuk', 'keterangan' => null, 'created_at' => now(), 'updated_at' => now()],
+]);
+
+4. Ketik: exit
+
+════════════════════════════════════════════════
+CARA 2 - Via SQL Direct (ALTERNATIF):
+════════════════════════════════════════════════
+
+Buka phpMyAdmin atau database client, jalankan SQL ini:
+
+INSERT INTO kelas (id, kelas, created_at, updated_at) VALUES
+(1, 'X RPL', NOW(), NOW()),
+(2, 'XI RPL', NOW(), NOW()),
+(3, 'XII RPL', NOW(), NOW());
+
+INSERT INTO gurus (id, kode_guru, guru, created_at, updated_at) VALUES
+(1, 'G001', 'Pak Joko', NOW(), NOW()),
+(2, 'G002', 'Bu Siti', NOW(), NOW());
+
+INSERT INTO mapels (id, mapel, created_at, updated_at) VALUES
+(1, 'Matematika', NOW(), NOW()),
+(2, 'Bahasa Indonesia', NOW(), NOW());
+
+INSERT INTO tahun_ajarans (id, tahun_ajaran, created_at, updated_at) VALUES
+(1, '2024/2025', NOW(), NOW());
+
+INSERT INTO jadwals (id, guru_id, mapel_id, tahun_ajaran_id, kelas_id, jam_ke, hari, created_at, updated_at) VALUES
+(1, 1, 1, 1, 1, '1', 'Senin', NOW(), NOW()),
+(2, 2, 2, 1, 1, '2', 'Senin', NOW(), NOW());
+
+INSERT INTO guru_mengajars (jadwal_id, hari, kelas_id, guru_id, mapel_id, jam_ke, status, keterangan, created_at, updated_at) VALUES
+(1, 'Senin', 1, 1, 1, '1', 'Masuk', NULL, NOW(), NOW()),
+(2, 'Senin', 1, 2, 2, '2', 'Masuk', NULL, NOW(), NOW());
+
+════════════════════════════════════════════════
+SETELAH ISI DATA:
+════════════════════════════════════════════════
+
+1. Restart app di emulator (close & buka lagi)
+2. Login lagi sebagai siswa
+3. Pilih Hari: Senin
+4. Pilih Kelas: X RPL
+5. Data HARUS MUNCUL sekarang!
+
+════════════════════════════════════════════════

@@ -1,0 +1,120 @@
+════════════════════════════════════════════════
+FIX LOGIN KURIKULUM GAGAL
+════════════════════════════════════════════════
+
+MASALAH:
+Login dengan username "kurikulum" gagal
+
+PENYEBAB KEMUNGKINAN:
+1. Role di database masih "Waka Kurikulum" (bukan "Kurikulum")
+2. User belum ada di database
+3. Password salah
+
+════════════════════════════════════════════════
+SOLUSI 1 - CEK USER KURIKULUM:
+════════════════════════════════════════════════
+
+1. Buka terminal di folder Laravel project
+
+2. Jalankan:
+   php artisan tinker
+
+3. Ketik command ini:
+   User::where('username', 'kurikulum')->first();
+
+4. Lihat output:
+   - Kalau NULL = user belum ada (lanjut ke SOLUSI 2)
+   - Kalau ada, lihat field "role" nya apa
+
+5. Ketik: exit
+
+════════════════════════════════════════════════
+SOLUSI 2 - UPDATE ROLE KURIKULUM:
+════════════════════════════════════════════════
+
+Jika role masih "Waka Kurikulum", update dengan:
+
+1. php artisan tinker
+
+2. Ketik:
+   $user = User::where('username', 'kurikulum')->first();
+   $user->role = 'Kurikulum';
+   $user->save();
+
+3. Verifikasi:
+   User::where('username', 'kurikulum')->first();
+
+4. Ketik: exit
+
+════════════════════════════════════════════════
+SOLUSI 3 - BUAT USER KURIKULUM BARU:
+════════════════════════════════════════════════
+
+Jika user belum ada sama sekali:
+
+1. php artisan tinker
+
+2. Ketik:
+   use App\Models\User;
+   User::create([
+       'name' => 'Kurikulum User',
+       'username' => 'kurikulum',
+       'password' => bcrypt('123'),
+       'role' => 'Kurikulum'
+   ]);
+
+3. Verifikasi:
+   User::where('username', 'kurikulum')->first();
+
+4. Ketik: exit
+
+════════════════════════════════════════════════
+SOLUSI 4 - UPDATE SEMUA USER SEKALIGUS:
+════════════════════════════════════════════════
+
+Untuk memastikan semua user ada dengan role yang benar:
+
+1. php artisan tinker
+
+2. Copy-paste command ini SATU PER SATU:
+
+use App\Models\User;
+
+// Hapus semua user lama
+User::truncate();
+
+// Buat user baru dengan role yang benar
+User::create(['name' => 'Siswa User', 'username' => 'siswa', 'password' => bcrypt('123'), 'role' => 'Siswa']);
+User::create(['name' => 'Kurikulum User', 'username' => 'kurikulum', 'password' => bcrypt('123'), 'role' => 'Kurikulum']);
+User::create(['name' => 'Kepala Sekolah', 'username' => 'kepsek', 'password' => bcrypt('123'), 'role' => 'Kepala Sekolah']);
+User::create(['name' => 'Admin User', 'username' => 'admin', 'password' => bcrypt('123'), 'role' => 'Admin']);
+
+// Verifikasi
+User::all();
+
+3. Ketik: exit
+
+════════════════════════════════════════════════
+VERIFIKASI SETELAH FIX:
+════════════════════════════════════════════════
+
+Test login di Android app dengan:
+
+Username: kurikulum
+Password: 123
+Role: Kurikulum (pilih dari dropdown)
+
+Jika masih gagal, cek error message di layar Android:
+- "401 Unauthorized" = password/username salah
+- "Role tidak cocok" = role di database beda dengan pilihan
+
+════════════════════════════════════════════════
+KREDENSIAL LENGKAP SETELAH FIX:
+════════════════════════════════════════════════
+
+Username: siswa      | Password: 123 | Role: Siswa
+Username: kurikulum  | Password: 123 | Role: Kurikulum
+Username: kepsek     | Password: 123 | Role: Kepala Sekolah
+Username: admin      | Password: 123 | Role: Admin
+
+════════════════════════════════════════════════

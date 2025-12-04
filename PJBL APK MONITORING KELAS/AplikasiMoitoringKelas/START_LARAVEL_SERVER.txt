@@ -1,0 +1,27 @@
+════════════════════════════════════════════════
+CARA START LARAVEL SERVER
+════════════════════════════════════════════════
+
+1. Buka terminal/PowerShell BARU
+
+2. Masuk ke folder Laravel project Anda:
+   cd C:\path\to\laravel\project
+   
+   (Ganti dengan path Laravel project Anda yang sebenarnya)
+
+3. Jalankan perintah ini:
+   php artisan serve --host=192.168.1.6 --port=8000
+
+4. Biarkan terminal tetap terbuka (JANGAN DITUTUP!)
+
+5. Anda akan lihat output seperti:
+   "Server started on http://192.168.1.6:8000"
+
+════════════════════════════════════════════════
+
+SETELAH LARAVEL JALAN, baru test Android app!
+
+Kalau masih data kosong, screenshot layar app-nya
+(akan ada info "Token: ✅ 83ch" atau error message merah)
+
+════════════════════════════════════════════════

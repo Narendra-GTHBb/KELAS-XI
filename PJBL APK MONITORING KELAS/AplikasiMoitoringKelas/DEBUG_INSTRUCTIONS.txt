@@ -1,0 +1,138 @@
+═══════════════════════════════════════════════════════
+DEBUG INSTRUKSI - DATA KOSONG & AUTO-LOGIN ISSUE
+═══════════════════════════════════════════════════════
+
+MASALAH UTAMA:
+1. ❌ Data Kelas & Jadwal KOSONG
+2. ❌ Auto-login langsung ke Siswa (tidak ke login page)
+
+ROOT CAUSE:
+- API calls gagal karena authentication error
+- Token tidak valid / Laravel server tidak accessible
+- Auto-login is FITUR (bukan bug), tapi menyulitkan debug
+
+═══════════════════════════════════════════════════════
+LANGKAH DEBUG - INSTALL APK BARU:
+═══════════════════════════════════════════════════════
+
+1. INSTALL APK TERBARU (ada debug logging)
+   File: app\build\outputs\apk\debug\app-debug.apk
+
+2. CLEAR APP DATA DULU (untuk reset auto-login)
+   Settings → Apps → Aplikasi Monitoring Kelas → Storage → Clear Data
+
+3. PASTIKAN LARAVEL SERVER RUNNING:
+   php artisan serve --host=0.0.0.0 --port=8000
+   
+   HARUS pakai --host=0.0.0.0 agar emulator bisa akses!
+
+4. BUKA APLIKASI DAN LOGIN
+   Username: siswa
+   Password: 123
+   Role: Siswa
+
+5. LIHAT LAYAR SISWA - PERHATIKAN:
+   ✅ Di pojok kanan atas ada info: "Token: ✅ 83ch" (atau angka lain)
+   ❌ Kalau ada "Token: ❌ KOSONG" → TOKEN TIDAK TERSIMPAN!
+   
+   ✅ Error message akan tampil lengkap di layar (merah)
+   Format: "ERROR: HttpException - HTTP 401 Unauthorized"
+          atau
+          "ERROR: ConnectException - Failed to connect to /10.0.2.2:8000"
+
+═══════════════════════════════════════════════════════
+KEMUNGKINAN ERROR & SOLUSI:
+═══════════════════════════════════════════════════════
+
+ERROR 1: "Token: ❌ KOSONG"
+CAUSE: SessionManager.saveAuthToken() gagal
+FIX: Check MainActivity login response - pastikan token ada
+
+ERROR 2: "HttpException - HTTP 401 Unauthorized"
+CAUSE: Token tidak valid / Laravel reject token
+FIX: 
+  - Cek Laravel server logs: php artisan serve --host=0.0.0.0
+  - Pastikan user siswa sudah ada: php artisan tinker → User::all();
+  - Test token di Postman dulu
+
+ERROR 3: "ConnectException - Failed to connect"
+CAUSE: Laravel server tidak running / tidak accessible
+FIX:
+  - Restart Laravel: php artisan serve --host=0.0.0.0 --port=8000
+  - Cek firewall Windows - allow port 8000
+  - Test di browser: http://127.0.0.1:8000/api/kelas
+
+ERROR 4: "SocketTimeoutException - timeout"
+CAUSE: Laravel lambat respond (>30 detik)
+FIX:
+  - Cek Laravel .env - DB connection OK?
+  - Cek query performance - ada N+1 problem?
+
+═══════════════════════════════════════════════════════
+FITUR BARU - DEBUG INFO DI LAYAR:
+═══════════════════════════════════════════════════════
+
+APK versi baru sekarang menampilkan:
+
+1. TOKEN STATUS di pojok kanan atas
+   "Token: ✅ 83ch" = Ada token (83 karakter)
+   "Token: ❌ KOSONG" = Token hilang/tidak tersimpan
+
+2. ERROR MESSAGE DETAIL di layar
+   Format: "ERROR: <ExceptionClass> - <Message>"
+   Plus info: "Token: Ada (83 chars)" atau "Token: KOSONG!"
+
+3. LOGCAT DEBUG MESSAGES
+   Tag: "SiswaJadwal", "MainActivity"
+   - Loading status
+   - Token preview (20 chars)
+   - Success/fail counts
+
+═══════════════════════════════════════════════════════
+CARA DISABLE AUTO-LOGIN (SEMENTARA):
+═══════════════════════════════════════════════════════
+
+Jika auto-login mengganggu testing:
+
+OPTION 1: Clear App Data setiap kali test
+  Settings → Apps → Aplikasi Monitoring Kelas → Storage → Clear Data
+
+OPTION 2: Uninstall & Reinstall
+  Ini akan hapus SharedPreferences secara otomatis
+
+OPTION 3: Tambah tombol Logout (belum ada di build ini)
+  Akan saya tambahkan jika diperlukan
+
+═══════════════════════════════════════════════════════
+CARA CEK LARAVEL DATABASE MASIH ADA DATA:
+═══════════════════════════════════════════════════════
+
+Buka terminal Laravel project, jalankan:
+
+php artisan tinker
+
+Lalu test query:
+>>> \DB::table('kelas')->get();
+>>> \DB::table('jadwals')->count();
+>>> \DB::table('guru_mengajars')->count();
+>>> \DB::table('users')->where('username', 'siswa')->first();
+
+Jika semua return data, berarti DATABASE TIDAK HILANG!
+Masalahnya adalah ANDROID tidak bisa fetch data karena auth error.
+
+═══════════════════════════════════════════════════════
+NEXT STEPS AFTER INSTALL:
+═══════════════════════════════════════════════════════
+
+1. Install APK baru
+2. Clear app data
+3. Start Laravel server dengan --host=0.0.0.0
+4. Login sebagai siswa
+5. SCREENSHOT layar yang muncul - kirim ke saya
+6. Saya akan analisa error message dan kasih solusi spesifik
+
+PENTING: Jangan panik jika data masih kosong!
+Data di database kemungkinan MASIH ADA.
+Kita hanya perlu fix authentication flow.
+
+═══════════════════════════════════════════════════════

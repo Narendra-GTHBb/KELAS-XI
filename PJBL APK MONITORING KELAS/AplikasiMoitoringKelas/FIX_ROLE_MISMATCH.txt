@@ -1,0 +1,58 @@
+PERBAIKAN ROLE MISMATCH - Laravel UserSeeder
+==============================================
+
+MASALAH:
+- Android menggunakan role "Kurikulum"
+- Laravel seeder menggunakan role "Waka Kurikulum"
+- Ini akan menyebabkan login gagal (401 Unauthorized)
+
+SOLUSI:
+Edit file: database/seeders/UserSeeder.php
+
+UBAH BARIS INI:
+```php
+User::create([
+    'name' => 'Waka Kurikulum',
+    'username' => 'kurikulum',
+    'password' => '123',
+    'role' => 'Waka Kurikulum',
+]);
+```
+
+MENJADI:
+```php
+User::create([
+    'name' => 'Kurikulum User',
+    'username' => 'kurikulum',
+    'password' => '123',
+    'role' => 'Kurikulum',
+]);
+```
+
+LANGKAH EKSEKUSI:
+1. Buka file database/seeders/UserSeeder.php
+2. Ubah 'Waka Kurikulum' menjadi 'Kurikulum' di field 'role'
+3. Ubah 'name' menjadi 'Kurikulum User' (opsional, untuk konsistensi)
+4. Jalankan perintah:
+   ```
+   php artisan migrate:fresh --seed
+   ```
+   PERINGATAN: Ini akan RESET semua data di database!
+
+5. Atau kalau tidak mau reset semua data, manual update via SQL:
+   ```
+   UPDATE users SET role = 'Kurikulum', name = 'Kurikulum User' WHERE username = 'kurikulum';
+   ```
+
+VERIFIKASI:
+- Test login di Postman dengan:
+  - username: kurikulum
+  - password: 123
+  - role: Kurikulum (BUKAN "Waka Kurikulum")
+
+- Harus dapat token seperti sebelumnya
+
+SETELAH FIX:
+- Build Android APK: gradlew assembleDebug
+- Install APK ke device/emulator
+- Test login dengan credentials yang sudah diupdate

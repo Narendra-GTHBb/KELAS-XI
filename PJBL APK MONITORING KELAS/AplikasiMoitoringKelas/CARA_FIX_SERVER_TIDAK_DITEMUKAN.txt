@@ -1,0 +1,108 @@
+════════════════════════════════════════════════
+SOLUSI: SERVER TIDAK DITEMUKAN
+════════════════════════════════════════════════
+
+MASALAH:
+Android emulator tidak bisa konek ke Laravel server
+Error: "Server tidak ditemukan" atau "Failed to connect"
+
+PENYEBAB:
+Laravel server harus berjalan dengan --host=0.0.0.0
+agar bisa diakses dari emulator Android.
+
+Jika pakai "php artisan serve" saja, Laravel hanya
+listen di 127.0.0.1 yang tidak bisa diakses emulator.
+
+════════════════════════════════════════════════
+SOLUSI LENGKAP:
+════════════════════════════════════════════════
+
+1. STOP semua Laravel server yang sedang berjalan
+   - Tekan CTRL+C di terminal Laravel
+   - Atau tutup semua terminal/command prompt
+
+2. BUKA TERMINAL BARU di folder Laravel project
+
+3. JALANKAN command ini:
+
+   php artisan serve --host=0.0.0.0 --port=8000
+
+4. LIHAT output, harus muncul:
+
+   INFO  Server running on [http://0.0.0.0:8000]
+
+   BUKAN [http://127.0.0.1:8000]
+
+5. BIARKAN terminal tetap buka, jangan ditutup
+
+6. SEKARANG test login di emulator Android
+
+════════════════════════════════════════════════
+CARA CEPAT - PAKAI FILE BATCH:
+════════════════════════════════════════════════
+
+1. Edit file: START_LARAVEL_EMULATOR.bat
+
+2. Ganti path di line ini:
+   cd /d C:\Users\%USERNAME\path\to\laravel\project
+   
+   Contoh:
+   cd /d C:\xampp\htdocs\monitoring-kelas
+
+3. Save file
+
+4. Double-click START_LARAVEL_EMULATOR.bat
+
+5. Server otomatis jalan dengan config yang benar
+
+════════════════════════════════════════════════
+CEK APAKAH SERVER SUDAH BERJALAN BENAR:
+════════════════════════════════════════════════
+
+Di PowerShell, jalankan:
+
+netstat -ano | Select-String "8000"
+
+Harus muncul salah satu dari ini:
+✅ TCP    0.0.0.0:8000           0.0.0.0:0              LISTENING
+✅ TCP    [::]:8000              [::]:0                 LISTENING
+
+Kalau yang muncul ini, SALAH:
+❌ TCP    127.0.0.1:8000         0.0.0.0:0              LISTENING
+
+════════════════════════════════════════════════
+PENJELASAN TEKNIS:
+════════════════════════════════════════════════
+
+Android Emulator punya IP khusus:
+- 10.0.2.2 = localhost dari host machine
+
+Tapi Laravel hanya listen di 127.0.0.1 secara default.
+127.0.0.1 TIDAK BISA diakses dari emulator.
+
+Solusi: Laravel harus listen di 0.0.0.0 (semua interface)
+agar bisa diakses dari 10.0.2.2 (emulator).
+
+════════════════════════════════════════════════
+JIKA MASIH GAGAL:
+════════════════════════════════════════════════
+
+1. Cek firewall Windows:
+   - Buka Windows Defender Firewall
+   - Allow PHP melalui firewall
+
+2. Cek antivirus:
+   - Disable sementara antivirus
+   - Test lagi
+
+3. Restart emulator:
+   - Tutup emulator
+   - Buka lagi
+   - Test lagi
+
+4. Cek logcat Android:
+   - Di Android Studio: Logcat tab
+   - Filter: "ApiClient" atau "OkHttp"
+   - Lihat error detail
+
+════════════════════════════════════════════════

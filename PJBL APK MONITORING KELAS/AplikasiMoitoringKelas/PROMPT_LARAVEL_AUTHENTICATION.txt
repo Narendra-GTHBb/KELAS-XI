@@ -1,0 +1,454 @@
+================================================================================
+PROMPT UNTUK AI LARAVEL - IMPLEMENTASI AUTHENTICATION DENGAN SANCTUM
+================================================================================
+
+Saya ingin menambahkan sistem autentikasi menggunakan Laravel Sanctum untuk API 
+yang sudah ada. Install Sanctum, buat migration users, buat AuthController, 
+update routes, dan buat seeder untuk user dummy. 
+
+Berikut file-file yang perlu dibuat/diubah:
+
+================================================================================
+1. INSTALL SANCTUM
+================================================================================
+
+Jalankan command berikut:
+
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+
+
+================================================================================
+2. FILE: app/Http/Kernel.php
+================================================================================
+
+Update middleware group 'api' menjadi:
+
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    protected $middleware = [
+        // middleware global yang sudah ada
+    ];
+
+    protected $middlewareGroups = [
+        'web' => [
+            // middleware web yang sudah ada
+        ],
+
+        'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    protected $middlewareAliases = [
+        // aliases yang sudah ada
+    ];
+}
+
+
+================================================================================
+3. FILE: database/migrations/2024_01_01_000000_create_users_table.php
+================================================================================
+
+Buat file migration baru (sesuaikan timestamp):
+
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->enum('role', ['Siswa', 'Kurikulum', 'Kepala Sekolah', 'Admin']);
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+    }
+};
+
+
+================================================================================
+4. FILE: app/Models/User.php
+================================================================================
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'username',
+        'password',
+        'role',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'password' => 'hashed',
+    ];
+}
+
+
+================================================================================
+5. FILE: app/Http/Controllers/AuthController.php
+================================================================================
+
+Buat file baru:
+
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+class AuthController extends Controller
+{
+    /**
+     * Login user dan generate token
+     */
+    public function login(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'role' => 'required|string|in:Siswa,Kurikulum,Kepala Sekolah,Admin',
+        ]);
+
+        // Cari user berdasarkan username dan role
+        $user = User::where('username', $request->username)
+                    ->where('role', $request->role)
+                    ->first();
+
+        // Validasi user dan password
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Username, password, atau role tidak sesuai'
+            ], 401);
+        }
+
+        // Hapus token lama
+        $user->tokens()->delete();
+
+        // Buat token baru
+        $token = $user->createToken('auth-token')->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Login berhasil',
+            'data' => [
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'username' => $user->username,
+                    'role' => $user->role,
+                ],
+                'token' => $token
+            ]
+        ], 200);
+    }
+
+    /**
+     * Logout user
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout berhasil'
+        ], 200);
+    }
+
+    /**
+     * Get user yang sedang login
+     */
+    public function me(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'id' => $request->user()->id,
+                'name' => $request->user()->name,
+                'username' => $request->user()->username,
+                'role' => $request->user()->role,
+            ]
+        ], 200);
+    }
+}
+
+
+================================================================================
+6. FILE: routes/api.php
+================================================================================
+
+Update routes dengan menambahkan auth routes:
+
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MapelController;
+use App\Http\Controllers\TahunAjaranController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\GuruMengajarController;
+
+/*
+|--------------------------------------------------------------------------
+| Public Routes (tanpa authentication)
+|--------------------------------------------------------------------------
+*/
+Route::post('/login', [AuthController::class, 'login']);
+
+/*
+|--------------------------------------------------------------------------
+| Protected Routes (perlu token Sanctum)
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    // Auth routes
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/me', [AuthController::class, 'me']);
+    
+    // Resource routes yang sudah ada
+    Route::apiResource('gurus', GuruController::class);
+    Route::apiResource('kelas', KelasController::class);
+    Route::apiResource('mapels', MapelController::class);
+    Route::apiResource('tahun-ajarans', TahunAjaranController::class);
+    Route::apiResource('jadwals', JadwalController::class);
+    Route::apiResource('guru-mengajars', GuruMengajarController::class);
+    
+    // Custom routes yang sudah ada
+    Route::post('guru-mengajar/by-hari-kelas', [GuruMengajarController::class, 'getByHariKelas']);
+    Route::get('jadwal/kelas/{kelas_id}/{hari}', [JadwalController::class, 'getJadwalKelas']);
+    Route::get('jadwal/schedule/{kelas_id}/{hari}', [JadwalController::class, 'getJadwalByKelasHari']);
+});
+
+
+================================================================================
+7. FILE: database/seeders/UserSeeder.php
+================================================================================
+
+Buat file seeder baru:
+
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        // Clear existing users (opsional)
+        User::truncate();
+
+        // Create user Siswa
+        User::create([
+            'name' => 'Siswa Test',
+            'username' => 'siswa',
+            'password' => Hash::make('123'),
+            'role' => 'Siswa',
+        ]);
+
+        // Create user Kurikulum
+        User::create([
+            'name' => 'Kurikulum Test',
+            'username' => 'kurikulum',
+            'password' => Hash::make('123'),
+            'role' => 'Kurikulum',
+        ]);
+
+        // Create user Kepala Sekolah
+        User::create([
+            'name' => 'Kepala Sekolah Test',
+            'username' => 'kepsek',
+            'password' => Hash::make('123'),
+            'role' => 'Kepala Sekolah',
+        ]);
+
+        // Create user Admin
+        User::create([
+            'name' => 'Admin Test',
+            'username' => 'admin',
+            'password' => Hash::make('123'),
+            'role' => 'Admin',
+        ]);
+    }
+}
+
+
+================================================================================
+8. FILE: config/cors.php (OPSIONAL - jika ada masalah CORS)
+================================================================================
+
+<?php
+
+return [
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    
+    'allowed_methods' => ['*'],
+    
+    'allowed_origins' => ['*'],
+    
+    'allowed_origins_patterns' => [],
+    
+    'allowed_headers' => ['*'],
+    
+    'exposed_headers' => [],
+    
+    'max_age' => 0,
+    
+    'supports_credentials' => false,
+];
+
+
+================================================================================
+9. JALANKAN COMMAND BERIKUT
+================================================================================
+
+Setelah semua file dibuat, jalankan:
+
+php artisan migrate
+php artisan db:seed --class=UserSeeder
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+
+
+================================================================================
+10. TEST API DENGAN POSTMAN
+================================================================================
+
+A. TEST LOGIN
+-------------
+Method: POST
+URL: http://localhost:8000/api/login
+Headers: 
+    Content-Type: application/json
+
+Body (JSON):
+{
+    "username": "siswa",
+    "password": "123",
+    "role": "Siswa"
+}
+
+Response yang diharapkan:
+{
+    "success": true,
+    "message": "Login berhasil",
+    "data": {
+        "user": {
+            "id": 1,
+            "name": "Siswa Test",
+            "username": "siswa",
+            "role": "Siswa"
+        },
+        "token": "1|abcdefghijklmnopqrstuvwxyz..."
+    }
+}
+
+
+B. TEST PROTECTED ENDPOINT
+---------------------------
+Method: GET
+URL: http://localhost:8000/api/gurus
+Headers:
+    Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz...
+    Content-Type: application/json
+
+
+C. TEST LOGOUT
+--------------
+Method: POST
+URL: http://localhost:8000/api/logout
+Headers:
+    Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz...
+    Content-Type: application/json
+
+
+D. TEST ME (GET USER INFO)
+---------------------------
+Method: GET
+URL: http://localhost:8000/api/me
+Headers:
+    Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz...
+    Content-Type: application/json
+
+
+================================================================================
+11. CREDENTIAL LOGIN DEFAULT
+================================================================================
+
+Username: siswa       | Password: 123 | Role: Siswa
+Username: kurikulum   | Password: 123 | Role: Kurikulum
+Username: kepsek      | Password: 123 | Role: Kepala Sekolah
+Username: admin       | Password: 123 | Role: Admin
+
+
+================================================================================
+INSTRUKSI UNTUK AI
+================================================================================
+
+Tolong implementasikan semua file dan konfigurasi di atas secara lengkap dan benar. 
+Pastikan:
+
+1. Semua file dibuat dengan path dan nama yang tepat
+2. Semua namespace dan use statement benar
+3. Migration dijalankan dengan sukses
+4. Seeder dijalankan dan 4 user dummy berhasil dibuat
+5. Cache dan config di-clear
+6. Endpoint /api/login bisa diakses tanpa token
+7. Endpoint lainnya memerlukan token Bearer
+8. Test login dengan Postman berhasil dan return token
+9. Test protected endpoint dengan token berhasil
+
+Jika ada error, perbaiki dan laporkan hasilnya.
