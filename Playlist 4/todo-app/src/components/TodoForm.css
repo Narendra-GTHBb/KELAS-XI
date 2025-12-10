@@ -1,0 +1,54 @@
+.todo-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.todo-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.todo-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.btn-submit {
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #27ae60;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #2ecc71;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #e74c3c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}

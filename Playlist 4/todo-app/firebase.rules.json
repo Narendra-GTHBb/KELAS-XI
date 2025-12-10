@@ -1,0 +1,27 @@
+{
+  "rules": {
+    // Require authenticated users for read/write
+    ".read": "auth != null",
+    ".write": "auth != null",
+
+    "todos": {
+      // Each todo is stored under a push key, allow owners to write their own
+      "$todoId": {
+        ".validate": "newData.hasChildren(['text','createdAt'])",
+        "text": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 1000"
+        },
+        "completed": {
+          ".validate": "newData.isBoolean()"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "ownerId": {
+          // If you add ownerId when creating todos, ensure it matches auth.uid
+          ".validate": "!data.exists() || newData.val() === auth.uid"
+        }
+      }
+    }
+  }
+}
