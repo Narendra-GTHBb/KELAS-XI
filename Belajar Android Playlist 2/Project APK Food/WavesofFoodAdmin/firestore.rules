@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Admin users collection - allow read for any authenticated user (for login verification)
+    match /admin_users/{adminId} {
+      allow read: if request.auth != null;  // Simplified: allow any authenticated user to read
+      allow write: if false; // Only allow creation through server-side scripts
+    }
+    
+    // Users collection - readable and writable by authenticated admins
+    match /users/{userId} {
+      allow read, write: if request.auth != null && 
+                           exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+    }
+    
+    // Foods collection - readable and writable by authenticated admins
+    match /foods/{foodId} {
+      allow read, write: if request.auth != null && 
+                           exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+    }
+    
+    // Categories collection - readable and writable by authenticated admins
+    match /categories/{categoryId} {
+      allow read, write: if request.auth != null && 
+                           exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+    }
+    
+    // Orders collection - readable and writable by authenticated admins
+    match /orders/{orderId} {
+      allow read, write: if request.auth != null && 
+                           exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+    }
+    
+    // Analytics collection - readable by authenticated admins
+    match /analytics/{doc} {
+      allow read: if request.auth != null && 
+                    exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+      allow write: if false; // Only allow server-side updates
+    }
+    
+    // App settings - readable by authenticated admins
+    match /app_settings/{doc} {
+      allow read: if request.auth != null && 
+                    exists(/databases/$(database)/documents/admin_users/$(request.auth.uid));
+      allow write: if request.auth != null && 
+                     exists(/databases/$(database)/documents/admin_users/$(request.auth.uid)) &&
+                     get(/databases/$(database)/documents/admin_users/$(request.auth.uid)).data.role in ['Super Admin', 'Admin'];
+    }
+    
+    // All other documents are denied by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "572188081009",
+    "project_id": "fir-tutorial-25b2f",
+    "storage_bucket": "fir-tutorial-25b2f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572188081009:android:51008b813eb84d06d754d0",
+        "android_client_info": {
+          "package_name": "com.apkfirebase.firebasetutorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAThYabxulXcK61bNw5n0jGSHKrdkT_6SA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

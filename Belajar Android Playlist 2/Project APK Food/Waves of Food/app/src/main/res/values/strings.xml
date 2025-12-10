@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Waves of Food</string>
+    
+    <!-- Authentication -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="sign_up_here">Sign up here</string>
+    <string name="sign_in_here">Sign in here</string>
+    
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="admin_panel">Admin Panel</string>
+    
+    <!-- Common -->
+    <string name="search">Search</string>
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
+    <string name="orders">Orders</string>
+    <string name="search_in_category">Search in this category...</string>
+    <string name="no_food_found">No food found</string>
+    <string name="category_image">Category Image</string>
+    
+    <!-- Home -->
+    <string name="welcome_back">Welcome back!</string>
+    <string name="search_food">Search for food...</string>
+    <string name="categories">Categories</string>
+    <string name="popular_food">Popular Food</string>
+    <string name="see_all">See All</string>
+    
+    <!-- Categories -->
+    <string name="pizza">Pizza</string>
+    <string name="burger">Burger</string>
+    <string name="drinks">Drinks</string>
+    <string name="dessert">Dessert</string>
+    <string name="noodles">Noodles</string>
+    <string name="rice">Rice</string>
+    
+    <!-- Food Details -->
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="quantity">Quantity</string>
+    
+    <!-- Profile -->
+    <string name="profile_avatar">Profile Avatar</string>
+    <string name="order_history">Order History</string>
+    <string name="favorites">Favorites</string>
+    <string name="settings">Settings</string>
+    <string name="arrow_right">Arrow Right</string>
+    <string name="description">Description</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="price">Price</string>
+    
+    <!-- Cart -->
+    <string name="my_cart">My Cart</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+    <string name="empty_cart">Your cart is empty</string>
+    <string name="start_shopping">Start Shopping</string>
+    
+    <!-- Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_orders">My Orders</string>
+    <string name="addresses">Delivery Addresses</string>
+    <string name="logout">Logout</string>
+    <string name="save">Save</string>
+    
+    <!-- Admin -->
+    <string name="admin_login">Admin Login</string>
+    <string name="manage_menu">Manage Menu</string>
+    <string name="add_food">Add New Food</string>
+    <string name="edit_food">Edit Food</string>
+    <string name="delete_food">Delete Food</string>
+    <string name="food_name">Food Name</string>
+    <string name="food_price">Food Price</string>
+    <string name="food_description">Food Description</string>
+    <string name="food_category">Food Category</string>
+    <string name="upload_image">Upload Image</string>
+    
+    <!-- Messages -->
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+    <string name="loading">Loading...</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_internet">No internet connection</string>
+    
+    <!-- Order -->
+    <string name="order_confirmed">Order Confirmed</string>
+    <string name="order_details">Order Details</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
+    
+    <!-- General -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="continue_text">Continue</string>
+    
+    <!-- Content Descriptions -->
+    <string name="food_image">Food Image</string>
+    <string name="rating">Rating</string>
+</resources>

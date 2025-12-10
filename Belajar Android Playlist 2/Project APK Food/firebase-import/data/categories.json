@@ -1,0 +1,66 @@
+[
+  {
+    "id": "cat_pizza",
+    "name": "Pizza",
+    "description": "Delicious pizza varieties",
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b",
+    "isActive": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "cat_burger",
+    "name": "Burger",
+    "description": "Juicy burgers and sandwiches",
+    "imageUrl": "https://images.unsplash.com/photo-1571091718767-18b5b1457add",
+    "isActive": true,
+    "sortOrder": 2
+  },
+  {
+    "id": "cat_noodles",
+    "name": "Noodles",
+    "description": "Asian noodles and pasta",
+    "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+    "isActive": true,
+    "sortOrder": 3
+  },
+  {
+    "id": "cat_rice",
+    "name": "Rice Dishes",
+    "description": "Traditional rice meals",
+    "imageUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19",
+    "isActive": true,
+    "sortOrder": 4
+  },
+  {
+    "id": "cat_drinks",
+    "name": "Drinks",
+    "description": "Refreshing beverages",
+    "imageUrl": "https://images.unsplash.com/photo-1544145945-f90425340c7e",
+    "isActive": true,
+    "sortOrder": 5
+  },
+  {
+    "id": "cat_dessert",
+    "name": "Desserts",
+    "description": "Sweet treats and desserts",
+    "imageUrl": "https://images.unsplash.com/photo-1551024506-0bccd828d307",
+    "isActive": true,
+    "sortOrder": 6
+  },
+  {
+    "id": "cat_snacks",
+    "name": "Snacks",
+    "description": "Light bites and appetizers",
+    "imageUrl": "https://images.unsplash.com/photo-1599490659213-e2b9527bd087",
+    "isActive": true,
+    "sortOrder": 7
+  },
+  {
+    "id": "cat_chicken",
+    "name": "Chicken",
+    "description": "Crispy fried chicken",
+    "imageUrl": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58",
+    "isActive": true,
+    "sortOrder": 8
+  }
+]
