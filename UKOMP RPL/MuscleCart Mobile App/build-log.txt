@@ -1,0 +1,193 @@
+﻿> Task :app:clean
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:compileDebugRenderscript NO-SOURCE
+> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugResValues
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:javaPreCompileDebug
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:processDebugManifestForPackage
+> Task :app:desugarDebugFileDependencies
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:buildKotlinToolingMetadata
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:compileReleaseAidl NO-SOURCE
+> Task :app:checkDebugDuplicateClasses
+> Task :app:compileReleaseRenderscript NO-SOURCE
+> Task :app:generateReleaseBuildConfig
+> Task :app:mergeLibDexDebug
+> Task :app:generateReleaseResValues
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:mergeDebugResources
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:parseReleaseLocalResources
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:extractProguardFiles
+> Task :app:javaPreCompileRelease
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:mergeReleaseResources
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:desugarReleaseFileDependencies
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :app:processReleaseJavaRes NO-SOURCE
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:processDebugAndroidTestManifest
+> Task :app:compileDebugAndroidTestRenderscript NO-SOURCE
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:processDebugUnitTestJavaRes NO-SOURCE
+> Task :app:preReleaseUnitTestBuild UP-TO-DATE
+> Task :app:mergeReleaseArtProfile
+> Task :app:processReleaseUnitTestJavaRes NO-SOURCE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processReleaseManifestForPackage
+> Task :app:javaPreCompileReleaseUnitTest
+> Task :app:processDebugResources
+> Task :app:processReleaseResources
+> Task :app:optimizeReleaseResources
+> Task :app:mergeExtDexRelease
+> Task :app:kaptGenerateStubsDebugKotlin
+> Task :app:mergeExtDexDebug
+> Task :app:kaptGenerateStubsReleaseKotlin
+> Task :app:kaptDebugKotlin
+> Task :app:kaptReleaseKotlin
+
+> Task :app:compileDebugKotlin
+kotlinOptions.freeCompilerArgs were changed on task :app:compileDebugKotlin execution phase: -Xplugin=C:\Users\rezae\.gradle\caches\modules-2\files-2.1\androidx.compose.compiler\compiler\1.4.3\3d5ff820c24eb2c70ee29237f5b60403dd2c39fd\compiler-1.4.3.jar, -P, plugin:androidx.compose.plugins.idea:enabled=true, -Xallow-unstable-dependencies, -P, plugin:androidx.compose.compiler.plugins.kotlin:sourceInformation=true, -P, plugin:androidx.compose.compiler.plugins.kotlin:liveLiterals=true
+This behaviour is deprecated and become an error in future releases!
+.\gradlew : e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/
+java/com/gymecommerce/musclecart/data/repository/CategoryRepositoryImpl.kt:76:6
+1 Unresolved reference. None of the following candidates is applicable because 
+of receiver type mismatch: 
+At line:1 char:1
++ .\gradlew clean build 2>&1 | Out-File -FilePath "build-log.txt" -Enco ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (e: file:///C:/X...type mismatch:  
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/java/com/gym
+ecommerce/musclecart/data/repository/OrderRepositoryImpl.kt:77:56 Unresolved 
+reference. None of the following candidates is applicable because of receiver 
+type mismatch: 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/java/com/gym
+ecommerce/musclecart/data/repository/UserRepositoryImpl.kt:59:61 Unresolved 
+reference. None of the following candidates is applicable because of receiver 
+type mismatch: 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+
+> Task :app:compileReleaseKotlin FAILED
+kotlinOptions.freeCompilerArgs were changed on task :app:compileReleaseKotlin execution phase: -Xplugin=C:\Users\rezae\.gradle\caches\modules-2\files-2.1\androidx.compose.compiler\compiler\1.4.3\3d5ff820c24eb2c70ee29237f5b60403dd2c39fd\compiler-1.4.3.jar, -P, plugin:androidx.compose.plugins.idea:enabled=true, -Xallow-unstable-dependencies
+This behaviour is deprecated and become an error in future releases!
+e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/java/com/gym
+ecommerce/musclecart/data/repository/CategoryRepositoryImpl.kt:76:61 
+Unresolved reference. None of the following candidates is applicable because 
+of receiver type mismatch: 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/java/com/gym
+ecommerce/musclecart/data/repository/OrderRepositoryImpl.kt:77:56 Unresolved 
+reference. None of the following candidates is applicable because of receiver 
+type mismatch: 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+e: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/app/src/main/java/com/gym
+ecommerce/musclecart/data/repository/UserRepositoryImpl.kt:59:61 Unresolved 
+reference. None of the following candidates is applicable because of receiver 
+type mismatch: 
+public inline fun String.toInt(): Int defined in kotlin.text
+public inline fun String.toInt(radix: Int): Int defined in kotlin.text
+private fun Iterable<FlagEnum>.toInt(): Int defined in kotlin.text
+
+> Task :app:compileDebugKotlin FAILED
+
+[Incubating] Problems report is available at: file:///C:/XAAMP/htdocs/UKOMP%20CODING%20RPL%20SMK/build/reports/problems/problems-report.html
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':app:compileReleaseKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.Gradle
+CompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.Gradle
+CompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 22s
+65 actionable tasks: 65 executed

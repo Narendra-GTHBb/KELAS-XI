@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "382552283638",
+    "project_id": "musclecart-197fe",
+    "storage_bucket": "musclecart-197fe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382552283638:android:e28c5a06d29eb240170fd7",
+        "android_client_info": {
+          "package_name": "com.gymecommerce.musclecart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382552283638-i67sasfq2rvq6lkf0mm816tfibo944g2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gymecommerce.musclecart",
+            "certificate_hash": "daaab595f3ab93d50bff2977a30fdbbd0cf6b76e"
+          }
+        },
+        {
+          "client_id": "382552283638-hefmtqoojt7ifeihg3d9rb87e4d7l3u1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUO6cY1xHzJeRdvcQoDYxpId7AMjo0XVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382552283638-hefmtqoojt7ifeihg3d9rb87e4d7l3u1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
